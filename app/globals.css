@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-inter-tight);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #11172b;
+}
+
+/*
+ * Liquid glass: a lit pane of glass, not a grey box.
+ * 1. saturate/brightness push the scene behind it through the blur so colour
+ *    bleeds into the pane instead of going milky.
+ * 2. The vertical gradient makes the pane denser at the bottom, so it reads as
+ *    a physical slab with thickness rather than flat translucency.
+ * 3. Inset highlights fake the specular edge: bright top lip, faint bottom
+ *    bounce, soft side rails.
+ * 4. Stacked outer shadows (tight contact + wide ambient) lift it off the page.
+ */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.66) 0%,
+    rgba(255, 255, 255, 0.46) 55%,
+    rgba(255, 255, 255, 0.52) 100%
+  );
+  /* Standard property only — writing the -webkit- alias alongside it makes
+     Lightning CSS collapse the pair down to the prefixed one, which silently
+     kills the blur in browsers that only support the unprefixed property. */
+  backdrop-filter: blur(28px) saturate(200%) brightness(1.07);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.32),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(17, 23, 43, 0.05),
+    0 8px 24px rgba(17, 23, 43, 0.09),
+    0 24px 56px rgba(17, 23, 43, 0.07);
+}
+
+/* Specular sheen across the top lip — the "liquid" part.
+   Requires the host element to be positioned (it already is); deliberately does
+   NOT set `position`, which would override Tailwind's absolute/fixed utilities. */
+.glass-sheen {
+  isolation: isolate;
+}
+
+/*
+ * Liquid nav — a brighter, denser pane than .glass.
+ * The "liquid" read comes from three things, none of which is transparency:
+ *   a) a near-opaque white surface that still refracts colour through the blur,
+ *   b) a wide soft white halo that dissolves the edge into the scene, and
+ *   c) a crisp bright rim + top specular lip so the edge catches light.
+ */
+.liquid-nav {
+  /* Low tint on purpose. Glass is defined by its EDGES and by the blurred
+     scene showing through it — not by an opaque white body. Anything past
+     ~0.5 here stops reading as glass and starts reading as frosted plastic. */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.44) 0%,
+    rgba(255, 255, 255, 0.26) 52%,
+    rgba(255, 255, 255, 0.36) 100%
+  );
+  backdrop-filter: blur(20px) saturate(185%) brightness(1.08);
+  box-shadow:
+    /* top specular lip — where light hits the bevel */
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 1),
+    /* light bouncing off the inside of the bottom edge */
+    inset 0 -1.5px 0 0 rgba(255, 255, 255, 0.55),
+    /* inner rim: the visible thickness of the pane */ inset 0 0 0 1.5px rgba(255, 255, 255, 0.55),
+    /* crisp lit outer rim — the edge of real glass catches light hardest */
+    0 0 0 1px rgba(255, 255, 255, 0.75),
+    /* tight bright bloom hugging that rim */ 0 0 14px 1px rgba(255, 255, 255, 0.5),
+    /* faint dark hairline so the shape still reads against bright sky */
+    0 0 0 1.5px rgba(17, 23, 43, 0.04),
+    /* contact + ambient shadow so it floats */ 0 6px 18px rgba(17, 23, 43, 0.09),
+    0 18px 44px rgba(17, 23, 43, 0.07),
+    /* wide halo for when it passes over darker scenery */
+    0 0 42px 10px rgba(255, 255, 255, 0.22);
+}
+
+.glass-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    120% 100% at 20% 0%,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
 }
