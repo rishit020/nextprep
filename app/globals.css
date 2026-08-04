@@ -9,8 +9,6 @@
   /* The one accent: mark, underline, and the glow under the CTA. */
   --accent: #4cb782;
   --accent-light: #8fd9b2;
-  /* The check inside the logo mark. */
-  --mark-green: #8ebf9c;
 }
 
 body {
