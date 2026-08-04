@@ -6,7 +6,7 @@
 export function SiteNav() {
   return (
     <header className="absolute inset-x-0 top-5 z-30 flex justify-center sm:top-8">
-      <p className="liquid-nav glass-sheen font-display relative inline-flex h-12 items-center gap-2.5 rounded-full pr-6 pl-4 text-[16px] font-extrabold tracking-[-0.02em] text-[#11172b] md:h-[52px] md:pr-7 md:pl-[18px] md:text-[18px]">
+      <p className="liquid-nav glass-sheen font-display relative inline-flex h-[43px] items-center gap-2 rounded-full pr-5 pl-3.5 text-[15px] font-extrabold tracking-[-0.02em] text-[#11172b] md:h-[47px] md:gap-2.5 md:pr-6 md:pl-4 md:text-[16px]">
         <LogoMark />
         NextPrep
       </p>
@@ -25,12 +25,12 @@ export function SiteNav() {
 function LogoMark() {
   return (
     <svg
-      width="33"
-      height="28"
+      width="30"
+      height="25"
       viewBox="0 0 62 52"
       fill="none"
       aria-hidden="true"
-      className="shrink-0 md:h-[30px] md:w-9"
+      className="shrink-0 md:h-[27px] md:w-8"
     >
       <path
         d="M31 12.8C26.2 10.1 17.6 8.8 7.4 8.8V38.2C17.6 38.2 26.2 40.5 31 44.6C35.8 40.5 44.4 38.2 54.6 38.2V8.8C44.4 8.8 35.8 10.1 31 12.8Z"

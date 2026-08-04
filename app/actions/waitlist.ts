@@ -42,17 +42,22 @@ export async function joinWaitlist(
     return { status: "error", message: "Something went wrong. Please try again." };
   }
 
-  // Only on a genuinely new row — otherwise re-submitting the same address
-  // would notify every time.
-  if (!error) {
-    // waitlist_count() is security definer and returns an aggregate only, so
-    // this never exposes the list itself. Null on failure — a broken count
-    // must not cost us the notification.
-    const { data: total } = await supabase.rpc("waitlist_count");
-    await notifyNewSignup(email, typeof total === "number" ? total : null);
+  // A duplicate is still a success from the visitor's point of view — they are
+  // on the list — but it must not notify again, and saying so plainly beats
+  // pretending the second submit did something.
+  if (error) {
+    return {
+      status: "success",
+      message: "You're already on the list. We'll be in touch.",
+    };
   }
 
-  // A duplicate is a success from the visitor's point of view — they are on the list.
+  // waitlist_count() is security definer and returns an aggregate only, so
+  // this never exposes the list itself. Null on failure — a broken count
+  // must not cost us the notification.
+  const { data: total } = await supabase.rpc("waitlist_count");
+  await notifyNewSignup(email, typeof total === "number" ? total : null);
+
   return {
     status: "success",
     message: "You're on the list. We'll email you when NextPrep opens.",
