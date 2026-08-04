@@ -14,43 +14,39 @@ export function SiteNav() {
   );
 }
 
-/** Open book, two leaves. Drawn rather than imported — swap in the real asset
- *  when there is one. */
+/**
+ * The Unistep mark: an open book in navy outline with a green check swept
+ * across it, the tail running past the book's top-right corner. The check is a
+ * filled shape, not a stroke, because it tapers to a point at both ends.
+ *
+ * Traced from the supplied artwork. Drop the real file into public/ and swap
+ * this for an <Image> if you would rather ship the original.
+ */
 function LogoMark() {
   return (
     <svg
-      width="26"
-      height="26"
-      viewBox="0 0 28 28"
+      width="33"
+      height="28"
+      viewBox="0 0 62 52"
       fill="none"
       aria-hidden="true"
-      className="md:h-7 md:w-7"
+      className="shrink-0 md:h-[30px] md:w-9"
     >
-      <defs>
-        <linearGradient id="unistep-leaf-l" x1="4" y1="6" x2="14" y2="24">
-          <stop stopColor="var(--accent-light)" />
-          <stop offset="1" stopColor="var(--accent)" />
-        </linearGradient>
-        <linearGradient id="unistep-leaf-r" x1="14" y1="6" x2="24" y2="24">
-          <stop stopColor="var(--accent)" />
-          <stop offset="1" stopColor="#2f8f60" />
-        </linearGradient>
-      </defs>
       <path
-        d="M14 8.9c-2-1.9-4.7-2.8-7.7-2.8-.85 0-1.5.65-1.5 1.5v11.9c0 .85.65 1.5 1.5 1.5 3 0 5.7.9 7.7 2.8V8.9Z"
-        fill="url(#unistep-leaf-l)"
-      />
-      <path
-        d="M14 8.9c2-1.9 4.7-2.8 7.7-2.8.85 0 1.5.65 1.5 1.5v11.9c0 .85-.65 1.5-1.5 1.5-3 0-5.7.9-7.7 2.8V8.9Z"
-        fill="url(#unistep-leaf-r)"
-      />
-      <path
-        d="M10.6 14.4l2.1 2.1 4.4-4.4"
-        stroke="#fff"
-        strokeWidth="1.9"
-        strokeLinecap="round"
+        d="M31 12.8C26.2 10.1 17.6 8.8 7.4 8.8V38.2C17.6 38.2 26.2 40.5 31 44.6C35.8 40.5 44.4 38.2 54.6 38.2V8.8C44.4 8.8 35.8 10.1 31 12.8Z"
+        stroke="#11172b"
+        strokeWidth="3.4"
         strokeLinejoin="round"
-        opacity=".92"
+      />
+      <path d="M31 12.8V44.6" stroke="#11172b" strokeWidth="3.4" strokeLinecap="round" />
+      <path
+        d="M13.6 21.2C16.2 20.2 18.8 23 21.2 25.8C23.8 28.8 27 32.4 29.2 35C34.8 28.4 45 16.4 52.8 7.6C54.4 5.9 56.6 7.4 55.2 9.4C48.2 19.4 37.6 31.8 32.2 38.6C31 40.1 29 40 27.8 38.4C25 34.6 18.8 27.2 14.8 23.8C13.2 22.4 12.8 21.5 13.6 21.2Z"
+        fill="var(--mark-green)"
+        // Dilates the traced outline so the mark still reads at 30px, without
+        // flattening the taper the way a plain stroked check would.
+        stroke="var(--mark-green)"
+        strokeWidth="2"
+        strokeLinejoin="round"
       />
     </svg>
   );

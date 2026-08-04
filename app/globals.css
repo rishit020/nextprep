@@ -11,6 +11,8 @@
   --accent-light: #8fd9b2;
   /* Softer sage-mint, taken from the supplied swoosh artwork. */
   --underline: #a3ccbf;
+  /* The check inside the logo mark — a touch deeper than the swoosh. */
+  --mark-green: #8ebf9c;
 }
 
 body {
