@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-inter-tight);
+  --font-sans: var(--font-merriweather-sans);
+  --font-display: var(--font-merriweather-sans);
+}
+
+:root {
+  /* The one accent: mark, underline, and the glow under the CTA. */
+  --accent: #4cb782;
+  --accent-light: #8fd9b2;
 }
 
 body {

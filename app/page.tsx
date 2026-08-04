@@ -9,8 +9,12 @@ export default function Home() {
       <HeroMedia />
 
       <main className="relative z-10 flex min-h-svh flex-col items-center justify-center px-6 pt-16 pb-12 text-center lg:pt-0 lg:pb-28">
-        <h1 className="font-display max-w-[820px] text-balance text-[42px] leading-[1.02] font-bold tracking-[-0.03em] text-[#11172b] sm:text-[58px] lg:text-[78px] lg:leading-[0.98] lg:tracking-[-0.042em]">
-          Your college plan, one step at a time.
+        <h1 className="font-display max-w-[880px] text-balance text-[42px] leading-[1.05] font-extrabold tracking-[-0.03em] text-[#11172b] sm:text-[58px] lg:text-[76px] lg:leading-[1.02] lg:tracking-[-0.038em]">
+          Your college plan, one step{" "}
+          <span className="relative inline-block whitespace-nowrap">
+            at a time.
+            <HandUnderline />
+          </span>
         </h1>
 
         {/* whitespace-nowrap from sm up: the line is the product promise and
@@ -27,5 +31,37 @@ export default function Home() {
         </div>
       </main>
     </div>
+  );
+}
+
+/**
+ * Two overlapping strokes so the underline reads as drawn by hand rather than
+ * as a border-bottom. preserveAspectRatio="none" lets it span whatever width
+ * the phrase happens to be at each breakpoint.
+ */
+function HandUnderline() {
+  return (
+    <svg
+      viewBox="0 0 300 22"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      className="pointer-events-none absolute -bottom-[0.19em] -left-[0.05em] h-[0.34em] w-[calc(100%+0.26em)] overflow-visible"
+    >
+      <path
+        d="M4 7C72 14.5 188 15.5 297 5.5"
+        stroke="var(--accent)"
+        strokeWidth="6"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M18 16.5C92 22 208 21.5 300 12.5"
+        stroke="var(--accent-light)"
+        strokeWidth="4.6"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.92"
+      />
+    </svg>
   );
 }

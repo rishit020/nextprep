@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 
-// Two optical cuts of one superfamily: Inter Tight for display (it is drawn for
-// large, tight headlines), Inter for text (drawn for legibility at small sizes).
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
+// One family across display and text. Merriweather Sans is a variable font
+// (300–800), so the headline can take the full 800 without loading a second cut.
+const merriweatherSans = Merriweather_Sans({
+  variable: "--font-merriweather-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -28,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} ${inter.variable} antialiased`}>
+    <html lang="en" className={`${merriweatherSans.variable} antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

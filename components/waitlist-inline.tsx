@@ -27,7 +27,7 @@ export function WaitlistInline({ tone = "light" }: { tone?: "light" | "dark" }) 
       >
         <span
           aria-hidden
-          className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#4A6B57] text-white"
+          className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[var(--accent)] text-white"
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path
@@ -48,15 +48,39 @@ export function WaitlistInline({ tone = "light" }: { tone?: "light" | "dark" }) 
     <div className="w-full max-w-[440px]">
       <form
         action={formAction}
-        className={`flex h-[58px] items-center gap-2 rounded-full p-1.5 pl-5 transition-shadow ${
+        className={`flex h-[62px] items-center gap-2 rounded-full p-1.5 pl-4 transition-shadow ${
           isDark
             ? "bg-white/10 ring-1 ring-white/20 focus-within:ring-white/50"
-            : "glass focus-within:shadow-[0_0_0_3px_rgba(17,23,43,0.12)]"
+            : "glass shadow-[0_10px_36px_-8px_rgba(76,183,130,0.42)] focus-within:shadow-[0_10px_36px_-8px_rgba(76,183,130,0.55),0_0_0_3px_rgba(76,183,130,0.28)]"
         }`}
       >
         <label htmlFor="waitlist-inline-email" className="sr-only">
           Email address
         </label>
+        <svg
+          width="19"
+          height="19"
+          viewBox="0 0 20 20"
+          fill="none"
+          aria-hidden="true"
+          className={`ml-1 shrink-0 ${isDark ? "text-white/45" : "text-[#4f5666]/70"}`}
+        >
+          <rect
+            x="2"
+            y="4.25"
+            width="16"
+            height="11.5"
+            rx="2.4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="m3.4 6.2 5.5 4.1a2 2 0 0 0 2.2 0l5.5-4.1"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </svg>
         <input
           id="waitlist-inline-email"
           name="email"
@@ -79,13 +103,24 @@ export function WaitlistInline({ tone = "light" }: { tone?: "light" | "dark" }) 
           onClick={(event) => {
             if (isPending) event.preventDefault();
           }}
-          className={`inline-flex h-[46px] shrink-0 items-center rounded-full px-6 text-[14px] font-semibold whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 aria-disabled:opacity-60 ${
+          className={`inline-flex h-[50px] shrink-0 items-center gap-1.5 rounded-full px-4 text-[14px] font-bold whitespace-nowrap transition-colors sm:gap-2 sm:px-6 sm:text-[15px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 aria-disabled:opacity-60 ${
             isDark
               ? "bg-white text-[#11172b] hover:bg-white/90 focus-visible:outline-white"
-              : "bg-[#11172b] text-white hover:bg-[#1c2440] focus-visible:outline-[#11172b]"
+              : "bg-[#0d1220] text-white shadow-[0_0_0_1px_rgba(76,183,130,0.55),0_6px_22px_-4px_rgba(76,183,130,0.65)] hover:bg-[#1c2440] focus-visible:outline-[#0d1220]"
           }`}
         >
           {isPending ? "Joining…" : "Join waitlist"}
+          {!isPending && (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 8h9.5M12.5 8 9 4.5M12.5 8 9 11.5"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
         </button>
       </form>
 
