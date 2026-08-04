@@ -55,6 +55,6 @@ export async function joinWaitlist(
   // A duplicate is a success from the visitor's point of view — they are on the list.
   return {
     status: "success",
-    message: "You're on the list. We'll email you when Unistep opens.",
+    message: "You're on the list. We'll email you when NextPrep opens.",
   };
 }

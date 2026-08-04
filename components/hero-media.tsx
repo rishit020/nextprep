@@ -28,7 +28,7 @@ export function HeroMedia() {
       {/* Paints instantly, backs the video while it buffers, and is the sole
           backdrop when the visitor prefers reduced motion. */}
       <Image
-        src="/images/unistep-hero-background.png"
+        src="/images/nextprep-hero-background.png"
         alt=""
         fill
         priority
@@ -49,8 +49,8 @@ export function HeroMedia() {
         tabIndex={-1}
         className="absolute inset-0 h-full w-full object-cover object-[30%_65%] motion-reduce:hidden sm:object-[38%_55%] lg:object-center"
       >
-        <source src="/videos/unistep-hero-background.webm" type="video/webm" />
-        <source src="/videos/unistep-hero-background.mp4" type="video/mp4" />
+        <source src="/videos/nextprep-hero-background.webm" type="video/webm" />
+        <source src="/videos/nextprep-hero-background.mp4" type="video/mp4" />
       </video>
 
       <div

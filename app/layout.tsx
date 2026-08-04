@@ -11,7 +11,7 @@ const merriweatherSans = Merriweather_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Unistep · Your college plan, one step at a time",
+  title: "NextPrep · Your college plan, one step at a time",
   description:
     "A college admissions assistant for high schoolers. Get a personalized plan customized for your intended major and target schools, with real next steps that update as you go. Join the waitlist.",
 };

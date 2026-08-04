@@ -1,4 +1,4 @@
--- Unistep waitlist signups.
+-- NextPrep waitlist signups.
 -- Run in the Supabase SQL editor, or via `supabase db push`.
 
 create table if not exists public.waitlist_signups (

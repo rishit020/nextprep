@@ -8,14 +8,14 @@ export function SiteNav() {
     <header className="absolute inset-x-0 top-5 z-30 flex justify-center sm:top-8">
       <p className="liquid-nav glass-sheen font-display relative inline-flex h-12 items-center gap-2.5 rounded-full pr-6 pl-4 text-[16px] font-extrabold tracking-[-0.02em] text-[#11172b] md:h-[52px] md:pr-7 md:pl-[18px] md:text-[18px]">
         <LogoMark />
-        Unistep
+        NextPrep
       </p>
     </header>
   );
 }
 
 /**
- * The Unistep mark: an open book in navy outline with a green check swept
+ * The NextPrep mark: an open book in navy outline with a green check swept
  * across it, the tail running past the book's top-right corner. The check is a
  * filled shape, not a stroke, because it tapers to a point at both ends.
  *

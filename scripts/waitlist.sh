@@ -28,4 +28,4 @@ COUNT=$(curl -s -X POST "$SUPABASE_URL/rest/v1/rpc/waitlist_count" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
   -H "Content-Type: application/json" -d '{}')
 
-echo "Unistep waitlist: ${COUNT} signup(s)"
+echo "NextPrep waitlist: ${COUNT} signup(s)"
