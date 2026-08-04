@@ -53,8 +53,8 @@ export function WaitlistInline({ variant = "hero" }: { variant?: Variant }) {
         action={formAction}
         className={
           isModal
-            ? "flex h-[52px] items-center gap-2 rounded-full border border-black/10 bg-white p-1.5 pl-3.5 transition-shadow focus-within:border-[#0d1220] focus-within:shadow-[0_0_0_3px_rgba(76,183,130,0.22)]"
-            : "glass flex h-[62px] items-center gap-2 rounded-full p-1.5 pl-4 shadow-[0_10px_36px_-8px_rgba(76,183,130,0.42)] transition-shadow focus-within:shadow-[0_10px_36px_-8px_rgba(76,183,130,0.55),0_0_0_3px_rgba(76,183,130,0.28)]"
+            ? "flex h-[52px] items-center gap-2 rounded-full border border-black/10 bg-white p-1.5 pl-3.5 transition-shadow focus-within:border-[#0d1220] focus-within:shadow-[0_0_0_3px_rgb(var(--accent-rgb)/0.22)]"
+            : "glass field-glow flex h-[62px] items-center gap-2 rounded-full p-1.5 pl-4"
         }
       >
         <label htmlFor={fieldId} className="sr-only">
@@ -107,7 +107,7 @@ export function WaitlistInline({ variant = "hero" }: { variant?: Variant }) {
           className={`inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#0d1220] font-bold whitespace-nowrap text-white transition-colors hover:bg-[#1c2440] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d1220] aria-disabled:opacity-60 ${
             isModal
               ? "h-[42px] px-4 text-[13px]"
-              : "h-[50px] px-4 text-[14px] shadow-[0_0_0_1px_rgba(76,183,130,0.55),0_6px_22px_-4px_rgba(76,183,130,0.65)] sm:gap-2 sm:px-6 sm:text-[15px]"
+              : "h-[50px] px-4 text-[14px] shadow-[0_0_0_1px_rgb(var(--accent-rgb)/0.6),0_6px_22px_-4px_rgb(var(--accent-rgb)/0.7)] sm:gap-2 sm:px-6 sm:text-[15px]"
           }`}
         >
           {isPending ? "Sending…" : "Get early access"}

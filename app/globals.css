@@ -6,9 +6,11 @@
 }
 
 :root {
-  /* The one accent: mark, underline, and the glow under the CTA. */
-  --accent: #4cb782;
-  --accent-light: #8fd9b2;
+  /* The one accent, taken from the logo mark: underline, form glow, CTA glow,
+     success tick, modal bullets. `--accent-rgb` exists so the glows can set
+     their own alpha without a second hard-coded copy of the colour. */
+  --accent: #d99594;
+  --accent-rgb: 217 149 148;
 }
 
 body {
@@ -26,6 +28,10 @@ body {
  * 4. Stacked outer shadows (tight contact + wide ambient) lift it off the page.
  */
 .glass {
+  /* Slot for an optional coloured glow, appended to the shadow stack below.
+     .glass is unlayered CSS, so a Tailwind shadow-[...] utility on the same
+     element loses to it — the glow has to come through here instead. */
+  --glass-glow: 0 0 0 0 rgba(0, 0, 0, 0);
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.66) 0%,
@@ -44,7 +50,19 @@ body {
     inset -1px 0 0 0 rgba(255, 255, 255, 0.4),
     0 1px 2px rgba(17, 23, 43, 0.05),
     0 8px 24px rgba(17, 23, 43, 0.09),
-    0 24px 56px rgba(17, 23, 43, 0.07);
+    0 24px 56px rgba(17, 23, 43, 0.07),
+    var(--glass-glow);
+}
+
+/* The email pill's accent glow, set through .glass's slot so it composes with
+   the glass edges rather than replacing them. */
+.field-glow {
+  --glass-glow: 0 10px 36px -8px rgb(var(--accent-rgb) / 0.5);
+}
+
+.field-glow:focus-within {
+  --glass-glow:
+    0 10px 36px -8px rgb(var(--accent-rgb) / 0.65), 0 0 0 3px rgb(var(--accent-rgb) / 0.32);
 }
 
 /* Specular sheen across the top lip — the "liquid" part.
