@@ -35,33 +35,24 @@ export default function Home() {
 }
 
 /**
- * Two overlapping strokes so the underline reads as drawn by hand rather than
- * as a border-bottom. preserveAspectRatio="none" lets it span whatever width
- * the phrase happens to be at each breakpoint.
+ * The supplied swoosh, traced as filled shapes rather than strokes: each mark
+ * tapers to a point at both ends, which a uniform stroke width cannot do.
+ * Two arcs, the shorter one offset right and sitting under the longer.
+ *
+ * preserveAspectRatio="none" lets it span whatever width the phrase takes at
+ * each breakpoint.
  */
 function HandUnderline() {
   return (
     <svg
-      viewBox="0 0 300 22"
+      viewBox="0 0 830 48"
       preserveAspectRatio="none"
       aria-hidden="true"
-      className="pointer-events-none absolute -bottom-[0.19em] -left-[0.05em] h-[0.34em] w-[calc(100%+0.26em)] overflow-visible"
+      fill="var(--underline)"
+      className="pointer-events-none absolute -bottom-[0.21em] -left-[0.04em] h-[0.36em] w-[calc(100%+0.22em)] overflow-visible"
     >
-      <path
-        d="M4 7C72 14.5 188 15.5 297 5.5"
-        stroke="var(--accent)"
-        strokeWidth="6"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path
-        d="M18 16.5C92 22 208 21.5 300 12.5"
-        stroke="var(--accent-light)"
-        strokeWidth="4.6"
-        strokeLinecap="round"
-        fill="none"
-        opacity="0.92"
-      />
+      <path d="M4 34C160 19 340 6.5 500 5.5C650 4.5 750 15 826 36C795 27 690 19 545 15.5C390 12 175 22 4 34Z" />
+      <path d="M193 40.5C300 30.5 450 24 600 22C700 21 752 24.5 778 30.5C740 28.5 660 27.5 560 28.5C420 30 290 36 193 40.5Z" />
     </svg>
   );
 }

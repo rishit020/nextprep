@@ -9,6 +9,8 @@
   /* The one accent: mark, underline, and the glow under the CTA. */
   --accent: #4cb782;
   --accent-light: #8fd9b2;
+  /* Softer sage-mint, taken from the supplied swoosh artwork. */
+  --underline: #a3ccbf;
 }
 
 body {
