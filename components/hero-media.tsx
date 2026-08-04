@@ -64,31 +64,13 @@ export function HeroMedia() {
 
       {/* Below lg the crop puts the CTA and footer line over dark grass, where
           the radial above has already faded out (measured 2.45:1). This lifts
-          only the lower band; desktop keeps the untouched radial.
-          Tinted to the page's paper colour, not pure white, so it feeds
-          straight into the dissolve below without a colour step. */}
+          only the lower band; desktop keeps the untouched radial. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 lg:hidden"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(251,250,247,0) 62%, rgba(251,250,247,0.58) 74%, rgba(251,250,247,0.58) 100%)",
-        }}
-      />
-
-      {/* The seam killer: the photograph dissolves into the page's own
-          background instead of ending at a hard edge, so the hero and the
-          sections below read as one continuous surface. Ends fully opaque at
-          #FBFAF7 — the exact colour the next section starts on. */}
-      <div
-        aria-hidden
-        // -bottom-px, not bottom-0: at fractional viewport heights a flush edge
-        // leaves a sub-pixel row of the hero's own background showing as a
-        // hairline. Overshooting by 1px removes it.
-        className="pointer-events-none absolute inset-x-0 -bottom-px h-[44vh]"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(251,250,247,0) 0%, rgba(251,250,247,0.4) 34%, rgba(251,250,247,0.82) 60%, #FBFAF7 84%, #FBFAF7 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,0) 62%, rgba(255,255,255,0.58) 74%, rgba(255,255,255,0.58) 100%)",
         }}
       />
 
@@ -98,10 +80,7 @@ export function HeroMedia() {
         type="button"
         onClick={toggleMotion}
         aria-pressed={!isPlaying}
-        // Low enough to clear the centred hero copy at every width, high enough
-        // that it still sits over visible video rather than the flat paper the
-        // dissolve ends in.
-        className="glass absolute right-5 bottom-[20vh] z-20 inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[12px] font-medium text-[#11172b] opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#11172b] motion-reduce:hidden"
+        className="glass absolute right-5 bottom-5 z-20 inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[12px] font-medium text-[#11172b] opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#11172b] motion-reduce:hidden"
       >
         {isPlaying ? (
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
