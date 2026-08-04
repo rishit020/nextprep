@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { HeroMedia } from "@/components/hero-media";
 import { SiteNav } from "@/components/site-nav";
 import { WaitlistInline } from "@/components/waitlist-inline";
@@ -35,24 +37,20 @@ export default function Home() {
 }
 
 /**
- * The supplied swoosh, traced as filled shapes rather than strokes: each mark
- * tapers to a point at both ends, which a uniform stroke width cannot do.
- * Two arcs, the shorter one offset right and sitting under the longer.
- *
- * preserveAspectRatio="none" lets it span whatever width the phrase takes at
- * each breakpoint.
+ * The supplied swoosh artwork, cropped to its own bounds so it can be
+ * positioned against the text without a canvas of empty transparency around
+ * it. Height is left to follow the artwork's real aspect rather than being
+ * stretched.
  */
 function HandUnderline() {
   return (
-    <svg
-      viewBox="0 0 830 48"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-      fill="var(--underline)"
-      className="pointer-events-none absolute -bottom-[0.21em] -left-[0.04em] h-[0.36em] w-[calc(100%+0.22em)] overflow-visible"
-    >
-      <path d="M4 34C160 19 340 6.5 500 5.5C650 4.5 750 15 826 36C795 27 690 19 545 15.5C390 12 175 22 4 34Z" />
-      <path d="M193 40.5C300 30.5 450 24 600 22C700 21 752 24.5 778 30.5C740 28.5 660 27.5 560 28.5C420 30 290 36 193 40.5Z" />
-    </svg>
+    <Image
+      src="/images/waitlist-underline.png"
+      alt=""
+      width={833}
+      height={38}
+      priority
+      className="pointer-events-none absolute -bottom-[0.08em] -left-[0.03em] h-auto w-[calc(100%+0.16em)] max-w-none"
+    />
   );
 }
