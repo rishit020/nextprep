@@ -11,10 +11,10 @@ const WHAT_YOU_GET = [
 ];
 
 const WHY_DIFFERENT = [
-  "Built by students, for students",
-  "Designed around real student problems",
-  "Grounded in school-specific research",
-  "More actionable than generic AI advice",
+  "Professionally built, then tailored to one student at a time",
+  "Researched school by school, not generalized across them",
+  "Concrete next actions, not advice you still have to decode",
+  "Rebuilt as your grades, activities, and school list change",
 ];
 
 /**
