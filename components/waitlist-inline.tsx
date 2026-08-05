@@ -87,7 +87,16 @@ export function WaitlistInline({ variant = "hero" }: { variant?: Variant }) {
         <input
           id={fieldId}
           name="email"
-          type="email"
+          // Deliberately type="text" rather than type="email". The browser's
+          // built-in email validation is ASCII-only and silently blocks real
+          // internationalised addresses (me@münchen.de, 用户@例子.广告) before
+          // they ever reach us. inputMode keeps the @-key keyboard on mobile and
+          // autoComplete keeps autofill; the server action does the validating.
+          type="text"
+          inputMode="email"
+          autoComplete="email"
+          autoCapitalize="none"
+          spellCheck={false}
           required
           maxLength={254}
           placeholder="you@school.edu"
