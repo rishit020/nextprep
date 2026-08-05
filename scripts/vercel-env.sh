@@ -26,7 +26,27 @@ command -v vercel >/dev/null || {
 vercel whoami >/dev/null 2>&1 || { echo "Not logged in. Run: vercel login" >&2; exit 1; }
 
 # Creating or attaching the Vercel project is a prerequisite for env vars.
-[ -d .vercel ] || { echo "==> Linking this directory to a Vercel project"; vercel link; }
+#
+# `vercel link` REWRITES .env.local with a VERCEL_OIDC_TOKEN, discarding
+# whatever was in it. Back the file up first and merge our keys back on top of
+# whatever Vercel wrote, or linking silently destroys every secret in it.
+if [ ! -d .vercel ]; then
+  backup="${ENV_FILE}.backup.$$"
+  cp "$ENV_FILE" "$backup"
+  echo "==> Backed up $ENV_FILE to $backup"
+  echo "==> Linking this directory to a Vercel project"
+  vercel link
+  if ! cmp -s "$ENV_FILE" "$backup"; then
+    echo "==> vercel link rewrote $ENV_FILE — restoring your values"
+    # Keep anything Vercel added that we did not already have.
+    added=$(grep -E '^VERCEL_' "$ENV_FILE" 2>/dev/null || true)
+    cp "$backup" "$ENV_FILE"
+    if [ -n "$added" ]; then
+      printf '\n# --- written by `vercel link`, leave as is ---\n%s\n' "$added" >> "$ENV_FILE"
+    fi
+  fi
+  rm -f "$backup"
+fi
 
 set -a
 # shellcheck disable=SC1090
