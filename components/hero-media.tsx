@@ -62,17 +62,6 @@ export function HeroMedia() {
         }}
       />
 
-      {/* Below lg the crop puts the CTA and footer line over dark grass, where
-          the radial above has already faded out (measured 2.45:1). This lifts
-          only the lower band; desktop keeps the untouched radial. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 lg:hidden"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(255,255,255,0) 62%, rgba(255,255,255,0.58) 74%, rgba(255,255,255,0.58) 100%)",
-        }}
-      />
 
       {/* WCAG 2.2.2: looping motion over 5s needs an on-page stop control.
           prefers-reduced-motion alone does not satisfy it. */}
