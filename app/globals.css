@@ -58,6 +58,19 @@ body {
    the glass edges rather than replacing them. */
 .field-glow {
   --glass-glow: 0 10px 36px -8px rgb(var(--accent-rgb) / 0.5);
+  /*
+   * The field sits over the grassy hillside. .glass doubles saturation, which
+   * pulls that green straight through the blur and tints the field. Drop the
+   * saturation boost and carry more white so the field reads neutral — the
+   * blur and lit edges still do the glass work.
+   */
+  backdrop-filter: blur(30px) saturate(1) brightness(1.06);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.8) 55%,
+    rgba(255, 255, 255, 0.84) 100%
+  );
 }
 
 .field-glow:focus-within {
