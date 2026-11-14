@@ -12,14 +12,14 @@ export function SiteNav() {
         {/* Supplied artwork, keyed off its background and cropped to its own
             bounds. Decorative: the wordmark beside it already names the site. */}
         <Image
-          src="/images/nextprep-mark.png"
+          src="/images/ivied-mark.png"
           alt=""
           width={219}
           height={219}
           priority
           className="h-[25px] w-[25px] shrink-0 md:h-[27px] md:w-[27px]"
         />
-        NextPrep
+        Ivied
       </p>
     </header>
   );

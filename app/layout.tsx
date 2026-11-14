@@ -11,9 +11,21 @@ const merriweatherSans = Merriweather_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "NextPrep · Your college plan, one step at a time",
+  metadataBase: new URL("https://ivied.app"),
+  title: "Ivied · Your college plan, one step at a time",
   description:
     "A college admissions assistant for high schoolers. Get a personalized plan customized for your intended major and target schools, with real next steps that update as you go. Join the waitlist.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Ivied",
+    title: "Ivied · Your college plan, one step at a time",
+    description:
+      "A personalized college plan with school-specific strategy and clear next steps.",
+  },
 };
 
 export default function RootLayout({

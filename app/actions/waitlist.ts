@@ -60,6 +60,6 @@ export async function joinWaitlist(
 
   return {
     status: "success",
-    message: "You're on the list. We'll email you when NextPrep opens.",
+    message: "You're on the list. We'll email you when Ivied opens.",
   };
 }

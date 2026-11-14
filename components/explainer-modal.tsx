@@ -92,7 +92,7 @@ export function ExplainerModal() {
               id="explainer-title"
               className="font-display text-[21px] leading-tight font-extrabold tracking-[-0.02em] text-[#11172b] sm:text-[23px]"
             >
-              What NextPrep does
+              What Ivied does
             </h2>
             <button
               type="button"
@@ -112,7 +112,7 @@ export function ExplainerModal() {
           </div>
 
           <p className="mt-3 text-[14.5px] leading-[1.55] text-[#4f5666]">
-            NextPrep turns your academics, interests, activities, intended major, and target
+            Ivied turns your academics, interests, activities, intended major, and target
             colleges into a personalized plan for what to do next.
           </p>
 
