@@ -30,9 +30,9 @@ export async function notifyNewSignup(email: string, total: number | null): Prom
         to,
         subject:
           total === null
-            ? "New NextPrep waitlist signup"
-            : `New NextPrep waitlist signup (#${total})`,
-        text: `${email} just joined the NextPrep waitlist.${runningTotal}`,
+            ? "New Ivied waitlist signup"
+            : `New Ivied waitlist signup (#${total})`,
+        text: `${email} just joined the Ivied waitlist.${runningTotal}`,
       }),
       signal: AbortSignal.timeout(5000),
     });
